@@ -1,0 +1,86 @@
+/* How It Works Section Component */
+.how {
+  border-top: 2px solid var(--ink);
+}
+
+.how .wrap {
+  padding-top: 72px;
+  padding-bottom: 80px;
+}
+
+.how-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: end;
+  margin-bottom: 36px;
+}
+
+.how h2 {
+  font-size: 38px;
+}
+
+.how .lead {
+  margin: 0;
+  color: var(--muted);
+  font-size: 17px;
+  max-width: 460px;
+}
+
+.how ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-how);
+  background: #fff;
+  overflow: hidden;
+}
+
+.how li {
+  padding: 28px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.how li + li {
+  border-left: 2px solid var(--ink);
+}
+
+.how .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.how .num {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.how .top svg {
+  width: 44px;
+  height: 44px;
+}
+
+.how h3 {
+  font-size: 22px;
+  line-height: 1.15;
+}
+
+.how li p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15.5px;
+}
