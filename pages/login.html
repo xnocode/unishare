@@ -30,7 +30,7 @@
     </div>
   </div>
 
-  <!-- Header / Navigation -->
+  <!-- Header -->
   <header class="auth-header">
     <div class="wrap">
       <a class="logo" href="../index.html" aria-label="Return to UniShare home">
@@ -47,177 +47,112 @@
     </div>
   </header>
 
-  <!-- Main Authentication Container -->
+  <!-- Main Container -->
   <main class="auth-main">
     <div class="auth-card">
       
-      <!-- Left Column: Community Showcase -->
+      <!-- Left Column: Item Showcase Grid -->
       <aside class="auth-left">
         <div>
-          <span class="auth-left-eyebrow">Your Campus. Your Community.</span>
-          <h2>A shared shelf.<br>A familiar campus.</h2>
-          <p>Borrow what you need, lend what you have, and share a ride with students from your own university.</p>
+          <span class="auth-left-eyebrow">Good to have you back</span>
+          <h2>Your campus.<br>Still sharing.</h2>
+          <p>A calculator for the exam. A football for the weekend. A ride to your next class. It’s all closer than you think.</p>
         </div>
 
-        <div class="auth-left-photo">
-          <img 
-            src="../assets/images/hero-student.jpg" 
-            alt="Smiling university student ready to share items on campus"
-            loading="lazy"
-          >
+        <!-- 4 Item Showcase Grid -->
+        <div class="auth-items-grid">
+          <div class="auth-item-card">
+            <img src="../assets/images/items/calculator.jpg" alt="Calculator">
+            <span>Calculator</span>
+          </div>
+          <div class="auth-item-card">
+            <img src="../assets/images/items/football.jpg" alt="Football">
+            <span>Football</span>
+          </div>
+          <div class="auth-item-card">
+            <img src="../assets/images/items/laptop-charger.jpg" alt="Laptop charger">
+            <span>Laptop charger</span>
+          </div>
+          <div class="auth-item-card">
+            <img src="../assets/images/rides/car-ride.jpg" alt="Car ride">
+            <span>Car ride</span>
+          </div>
         </div>
 
         <div class="auth-left-badge">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
           </svg>
-          <span>Real students. University email. A little more trust.</span>
+          <span>Only your university. Only verified students.</span>
         </div>
       </aside>
 
-      <!-- Right Column: Registration & Login Form -->
+      <!-- Right Column: Login Form -->
       <section class="auth-right">
         
-        <!-- Workflow Stepper (Hidden on direct login) -->
-        <nav id="auth-stepper" class="stepper" style="display: none;" aria-label="Registration Progress">
-          <div id="step-item-1" class="step-item active">
-            <span class="step-num">1</span>
-            <span class="step-title">Create account</span>
-          </div>
-          <div id="step-item-2" class="step-item">
-            <span class="step-num">2</span>
-            <span class="step-title">Confirm email</span>
-          </div>
-          <div id="step-item-3" class="step-item">
-            <span class="step-num">3</span>
-            <span class="step-title">Student verify</span>
-          </div>
-          <div id="step-item-4" class="step-item">
-            <span class="step-num">4</span>
-            <span class="step-title">Review pending</span>
-          </div>
-        </nav>
-
         <!-- View Switcher Tabs -->
         <div class="auth-tabs" role="tablist">
-          <button id="tab-login" class="auth-tab-btn active" role="tab" onclick="switchAuthView('login')">Log in</button>
-          <button id="tab-register" class="auth-tab-btn" role="tab" onclick="switchAuthView('register')">Create account</button>
+          <button class="auth-tab-btn active">Log in</button>
+          <a href="register.html" class="auth-tab-btn" style="text-decoration:none;">Create account</a>
         </div>
 
-        <!-- View: Log In (Active by default) -->
-        <div id="view-login" class="auth-view active">
-          <h1>Welcome back</h1>
-          <p class="auth-subtitle">Log in with your verified university credentials.</p>
+        <h1>Welcome back</h1>
+        <p class="auth-subtitle">Log in to your UniShare account with your university email.</p>
 
-          <form class="auth-form" onsubmit="handleAuthSubmit(event, 'login')">
-            <div class="form-group">
-              <label class="form-label" for="login-email">University email</label>
-              <div class="input-wrap">
-                <input 
-                  type="email" 
-                  id="login-email" 
-                  class="form-input" 
-                  placeholder="e.g. farhana@std.du.ac.bd" 
-                  required 
-                  autocomplete="email"
-                >
-              </div>
+        <form class="auth-form" action="login-2fa.html" method="GET" onsubmit="event.preventDefault(); showToast('Credentials Verified', 'Routing to two-factor verification...', 'success'); setTimeout(() => window.location.href='login-2fa.html', 800);">
+          
+          <div class="form-group">
+            <label class="form-label" for="login-email">University email</label>
+            <div class="input-wrap">
+              <input 
+                type="email" 
+                id="login-email" 
+                class="form-input" 
+                value="farhana@std.du.ac.bd"
+                placeholder="e.g. farhana@std.du.ac.bd" 
+                required 
+                autocomplete="email"
+              >
             </div>
+          </div>
 
-            <div class="form-group">
-              <div style="display:flex; justify-content:space-between; align-items:center;">
-                <label class="form-label" for="login-pass">Password</label>
-                <a href="#forgot" class="form-helper" style="color:var(--brand); font-weight:700;">Forgot password?</a>
-              </div>
-              <div class="input-wrap">
-                <input 
-                  type="password" 
-                  id="login-pass" 
-                  class="form-input" 
-                  placeholder="Enter your password" 
-                  required 
-                  autocomplete="current-password"
-                >
-                <button type="button" class="btn-toggle-pass" onclick="togglePasswordVisibility('login-pass', this)">Show</button>
-              </div>
+          <div class="form-group">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <label class="form-label" for="login-pass">Password</label>
+              <a href="forgot-password.html" class="form-helper" style="color:var(--brand); font-weight:700;">Forgot password?</a>
             </div>
-
-            <button type="submit" class="btn auth-submit-btn">Log in</button>
-
-            <div class="auth-switch-link">
-              Don't have an account yet? <a onclick="switchAuthView('register')">Create account</a>
+            <div class="input-wrap">
+              <input 
+                type="password" 
+                id="login-pass" 
+                class="form-input" 
+                value="password123"
+                placeholder="Enter your password" 
+                required 
+                autocomplete="current-password"
+              >
+              <button type="button" class="btn-toggle-pass" onclick="togglePasswordVisibility('login-pass', this)">Show</button>
             </div>
-          </form>
-        </div>
+          </div>
 
-        <!-- View: Create Account (Hidden until tab clicked) -->
-        <div id="view-register" class="auth-view">
-          <h1>Create your account</h1>
-          <p class="auth-subtitle">Your university email is your way in. Let’s start there.</p>
+          <div class="form-checkbox">
+            <input type="checkbox" id="remember" checked>
+            <label for="remember" class="checkbox-text">Keep me logged in on this device</label>
+          </div>
 
-          <form class="auth-form" onsubmit="handleAuthSubmit(event, 'register')">
-            <div class="form-group">
-              <label class="form-label" for="reg-email">University email</label>
-              <div class="input-wrap">
-                <input 
-                  type="email" 
-                  id="reg-email" 
-                  class="form-input" 
-                  placeholder="e.g. farhana@std.du.ac.bd" 
-                  required 
-                  autocomplete="email"
-                >
-              </div>
-              <span id="email-helper" class="form-helper">Only students with a university email can join.</span>
-            </div>
+          <button type="submit" class="btn auth-submit-btn">Log in</button>
 
-            <div class="form-group">
-              <label class="form-label" for="reg-pass">Password</label>
-              <div class="input-wrap">
-                <input 
-                  type="password" 
-                  id="reg-pass" 
-                  class="form-input" 
-                  placeholder="Create a password" 
-                  required 
-                  minlength="8"
-                  autocomplete="new-password"
-                >
-                <button type="button" class="btn-toggle-pass" onclick="togglePasswordVisibility('reg-pass', this)">Show</button>
-              </div>
-              <span class="form-helper">Use at least 8 characters, including a letter and a number.</span>
-            </div>
+          <div class="auth-switch-link">
+            New to UniShare? <a href="register.html">Create account</a>
+          </div>
 
-            <div class="form-group">
-              <label class="form-label" for="reg-confirm-pass">Confirm password</label>
-              <div class="input-wrap">
-                <input 
-                  type="password" 
-                  id="reg-confirm-pass" 
-                  class="form-input" 
-                  placeholder="Re-enter your password" 
-                  required 
-                  autocomplete="new-password"
-                >
-                <button type="button" class="btn-toggle-pass" onclick="togglePasswordVisibility('reg-confirm-pass', this)">Show</button>
-              </div>
-            </div>
+          <!-- Pending Status Helper -->
+          <div class="auth-callout" style="margin-top: 24px; background:var(--tint); border-color:var(--brand);">
+            <div class="auth-callout-title" style="font-size:13px; color:var(--brand);">Not verified yet? No worries.</div>
+            <p class="auth-callout-text">Log in to finish your student verification or <a href="verify-pending.html" style="color:var(--brand); font-weight:700; text-decoration:underline;">check review status</a>.</p>
+          </div>
 
-            <div class="form-checkbox">
-              <input type="checkbox" id="terms" required>
-              <label for="terms" class="checkbox-text">
-                I agree to the <a href="#terms">Terms of use</a> and <a href="#privacy">Privacy policy</a>.
-              </label>
-            </div>
-
-            <button type="submit" class="btn auth-submit-btn">Create account</button>
-            <p class="auth-note">We’ll send a 6-digit code to confirm your email.</p>
-
-            <div class="auth-switch-link">
-              Already have an account? <a onclick="switchAuthView('login')">Log in</a>
-            </div>
-          </form>
-        </div>
+        </form>
 
       </section>
     </div>
@@ -235,7 +170,7 @@
     </div>
   </footer>
 
-  <!-- Interactive Scripts -->
+  <!-- Scripts -->
   <script src="../assets/js/auth.js"></script>
 </body>
 </html>

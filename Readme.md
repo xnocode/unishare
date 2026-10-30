@@ -10,6 +10,17 @@
 ```text
 unishare/
 ├── index.html                   # Clean, semantic Landing Page (entry point)
+├── pages/                       # Complete Student Authentication & Verification Flow
+│   ├── register.html            # Step 1: Create Account & student email validation
+│   ├── confirm-email.html       # Step 2: 6-digit confirmation code verification
+│   ├── verify-student.html      # Step 3: Student ID, department & photo uploads
+│   ├── verify-pending.html      # Step 4: Review pending administrative status
+│   ├── verify-approved.html     # Step 4: Verification approved welcome & features
+│   ├── verify-rejected.html     # Step 4: Verification rejected & resubmission guidance
+│   ├── login.html               # Main student login with item showcase
+│   ├── login-2fa.html           # Two-Factor Authentication 6-digit login OTP
+│   ├── forgot-password.html     # Password recovery link request
+│   └── reset-password.html      # Set new password with live criteria checks
 ├── assets/
 │   ├── css/
 │   │   ├── variables.css        # Design tokens & color variables
@@ -20,10 +31,12 @@ unishare/
 │   │       ├── hero.css         # Hero banner & portrait
 │   │       ├── share.css        # Item rental & ride grids
 │   │       ├── how.css          # 3-step verification process
+│   │       ├── auth.css         # Auth suite, OTP inputs, dropzones & animations
 │   │       ├── footer.css       # Final CTA & footer
 │   │       └── responsive.css   # Tablet & mobile responsive rules
 │   ├── js/
-│   │   └── main.js              # Client-side JavaScript interactions
+│   │   ├── main.js              # Landing page client scripts & smooth scroll
+│   │   └── auth.js              # OTP auto-focus, drag & drop uploads, validation & toast
 │   └── images/
 │       ├── hero-student.jpg     # Hero banner photograph
 │       ├── items/               # Campus items (chargers, earphones, etc.)

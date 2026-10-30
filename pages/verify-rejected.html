@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UniShare - Resubmission Needed</title>
+  <meta name="description" content="Update your student verification photo to complete your UniShare account registration.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Core & Component Stylesheets -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/components/auth.css">
+</head>
+<body class="auth-page">
+
+  <!-- Header -->
+  <header class="auth-header">
+    <div class="wrap">
+      <a class="logo" href="../index.html" aria-label="Return to UniShare home">
+        <svg viewBox="0 0 32 32" fill="none" stroke="#0B5D5E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="16" r="5"/>
+          <circle cx="21" cy="16" r="5"/>
+          <path d="M16 11.5v9"/>
+        </svg>
+        UniShare
+      </a>
+      <div class="nav-actions">
+        <a class="link" href="../index.html">← Back to home</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="auth-main">
+    <div class="auth-card">
+      
+      <!-- Left Column -->
+      <aside class="auth-left">
+        <div>
+          <span class="auth-left-eyebrow">Review Update</span>
+          <h2>One more try,<br>Farhana.</h2>
+          <p>We couldn’t approve this submission. A clearer student ID photo will help our verification team finalize your profile.</p>
+
+          <div class="status-badge rejected">
+            <span>⚠️</span>
+            <span>Resubmission needed</span>
+          </div>
+        </div>
+
+        <div class="auth-left-photo">
+          <img 
+            src="../assets/images/hero-student.jpg" 
+            alt="Student verification resubmission"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="auth-left-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c53030" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <span>Action required: Re-upload photo</span>
+        </div>
+      </aside>
+
+      <!-- Right Column -->
+      <section class="auth-right">
+        
+        <!-- Workflow Stepper -->
+        <nav class="stepper" aria-label="Registration Progress">
+          <div class="step-item completed">
+            <span class="step-num">✓</span>
+            <span class="step-title">Create account</span>
+          </div>
+          <div class="step-item completed">
+            <span class="step-num">✓</span>
+            <span class="step-title">Confirm email</span>
+          </div>
+          <div class="step-item completed">
+            <span class="step-num">✓</span>
+            <span class="step-title">Student verify</span>
+          </div>
+          <div class="step-item alert">
+            <span class="step-num">!</span>
+            <span class="step-title" style="color:#c53030;">Action needed</span>
+          </div>
+        </nav>
+
+        <h1>Review feedback</h1>
+        <p class="auth-subtitle">Here is why your submission was paused and how to easily resolve it:</p>
+
+        <!-- Reason Banner -->
+        <div class="reason-banner">
+          <h3>Your student ID photo is too blurry</h3>
+          <p>We couldn’t read your full name and student ID number clearly. This is quick to fix—simply snap a clearer photo and re-upload.</p>
+        </div>
+
+        <div class="features-stack" style="margin-bottom: 24px;">
+          <div class="feature-box">
+            <div class="feature-box-icon" style="background:#fff5f5; border-color:#c53030; color:#c53030;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="20" height="20">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                <circle cx="12" cy="13" r="4"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Tips for retaking your student ID photo</h3>
+              <p>Place your ID card on a flat surface in good lighting. Avoid screen glare or fingers covering text, and make sure all 4 corners are visible.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="submission-summary">
+          <div style="font-size:12px; font-weight:800; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">Saved Profile Information</div>
+          <div class="summary-row">
+            <span class="summary-label">Student</span>
+            <span class="summary-val">Farhana Rahman</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">University</span>
+            <span class="summary-val">University of Dhaka</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">University Email</span>
+            <span class="summary-val">farhana@std.du.ac.bd</span>
+          </div>
+        </div>
+
+        <a href="verify-student.html" class="btn auth-submit-btn">Update & Resubmit for Review</a>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="auth-footer">
+    <div class="wrap">
+      <div>UniShare. Made for university students in Bangladesh.</div>
+      <div class="auth-footer-links">
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+        <a href="#help">Get help</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../assets/js/auth.js"></script>
+</body>
+</html>

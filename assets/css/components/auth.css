@@ -1,5 +1,5 @@
 /* ==========================================================================
-   UniShare - Authentication & Registration Component (Modular CSS)
+   UniShare - Authentication & Verification Suite (Modular CSS)
    ========================================================================== */
 
 /* Page Background & Wrapper */
@@ -16,6 +16,9 @@
 .auth-header {
   border-bottom: 2px solid var(--ink);
   background: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .auth-header .wrap {
@@ -45,7 +48,7 @@
   display: grid;
   grid-template-columns: 1fr 1.15fr;
   opacity: 0;
-  transform: translateY(28px) scale(0.98);
+  transform: translateY(24px) scale(0.98);
   animation: authCardEnter 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -57,7 +60,7 @@
 }
 
 /* ==========================================================================
-   Left Banner (Visual & Community Story)
+   Left Banner (Visual, Story & Item Showcase)
    ========================================================================== */
 .auth-left {
   background: var(--tint);
@@ -92,14 +95,14 @@
   font-size: 14.5px;
   color: var(--muted);
   line-height: 1.5;
-  margin: 0 0 24px;
+  margin: 0 0 20px;
 }
 
 .auth-left-photo {
   position: relative;
   width: 100%;
-  max-width: 340px;
-  margin: 0 auto 20px;
+  max-width: 320px;
+  margin: 0 auto 16px;
 }
 
 .auth-left-photo img {
@@ -134,8 +137,79 @@
   flex-shrink: 0;
 }
 
+/* Callout Info / Notice Boxes on Left Panel */
+.auth-callout {
+  background: var(--white);
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin-top: 16px;
+  box-shadow: 4px 4px 0 var(--brand);
+}
+
+.auth-callout-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: 4px;
+}
+
+.auth-callout-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.auth-callout-text {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* 4-Item Mini Showcase Grid (on Login page) */
+.auth-items-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 16px 0 20px;
+}
+
+.auth-item-card {
+  position: relative;
+  aspect-ratio: 1;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: 3px 3px 0 var(--brand);
+}
+
+.auth-item-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.auth-item-card span {
+  position: absolute;
+  left: 6px;
+  bottom: 6px;
+  padding: 2px 8px;
+  background: var(--white);
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
 /* ==========================================================================
-   Right Panel (Forms & Stepper)
+   Right Panel (Forms, Stepper, Status Screens)
    ========================================================================== */
 .auth-right {
   padding: 44px 40px;
@@ -149,8 +223,8 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
-  margin-bottom: 32px;
-  padding-bottom: 24px;
+  margin-bottom: 30px;
+  padding-bottom: 22px;
   border-bottom: 2px solid var(--tint);
 }
 
@@ -203,33 +277,10 @@
   color: var(--brand);
 }
 
-/* View Switcher Tabs (Create account / Log in) */
-.auth-tabs {
-  display: inline-flex;
-  background: var(--tint);
-  padding: 4px;
-  border-radius: 10px;
-  margin-bottom: 28px;
-  align-self: flex-start;
-  border: 1.5px solid rgba(11, 93, 94, 0.15);
-}
-
-.auth-tab-btn {
-  padding: 8px 18px;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--muted);
-  background: transparent;
-  border: none;
-  border-radius: 7px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.auth-tab-btn.active {
-  background: var(--white);
-  color: var(--ink);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+.step-item.alert .step-num {
+  border-color: #c53030;
+  background: #fff5f5;
+  color: #c53030;
 }
 
 /* Heading & Subtitle */
@@ -243,6 +294,7 @@
   font-size: 14.5px;
   color: var(--muted);
   margin: 0 0 24px;
+  line-height: 1.45;
 }
 
 /* Form Styles & Inputs */
@@ -250,26 +302,6 @@
   display: flex;
   flex-direction: column;
   gap: 18px;
-}
-
-.auth-view {
-  display: none;
-}
-
-.auth-view.active {
-  display: block;
-  animation: slideFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes slideFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .form-group {
@@ -314,6 +346,14 @@
   color: #92a4a1;
 }
 
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230B5D5E' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+
 /* Toggle Password Button */
 .btn-toggle-pass {
   position: absolute;
@@ -344,35 +384,262 @@
   color: #087443;
 }
 
-/* Checkbox Row */
-.form-checkbox {
+/* 6-Box OTP Code Inputs */
+.otp-inputs {
   display: flex;
-  align-items: flex-start;
   gap: 10px;
-  margin-top: 4px;
+  justify-content: space-between;
+  margin: 6px 0 12px;
 }
 
-.form-checkbox input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  accent-color: var(--brand);
-  cursor: pointer;
-  margin-top: 2px;
-}
-
-.checkbox-text {
-  font-size: 13.5px;
+.otp-box {
+  width: 52px;
+  height: 60px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 800;
+  font-family: var(--font-heading);
   color: var(--ink);
+  background: #fdfdfd;
+  border: 2px solid #cbd7d5;
+  border-radius: 10px;
+  outline: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.otp-box:focus {
+  border-color: var(--brand);
+  background: var(--white);
+  box-shadow: 0 0 0 4px var(--tint);
+  transform: translateY(-2px);
+}
+
+/* Upload Dropzones (Student ID & Selfie) */
+.upload-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 6px;
+}
+
+.upload-dropzone {
+  border: 2px dashed #b5c7c4;
+  border-radius: 12px;
+  padding: 24px 16px;
+  text-align: center;
+  background: #fafcfb;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.upload-dropzone:hover,
+.upload-dropzone.dragover {
+  border-color: var(--brand);
+  background: var(--tint);
+}
+
+.upload-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--tint);
+  display: grid;
+  place-items: center;
+  color: var(--brand);
+}
+
+.upload-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.upload-sub {
+  font-size: 11.5px;
+  color: var(--muted);
+}
+
+.upload-input-file {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Checklist / Validation Requirements */
+.criteria-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 4px 0 12px;
+}
+
+.criteria-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+
+.criteria-item.valid {
+  color: #087443;
+  font-weight: 700;
+}
+
+.criteria-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid var(--muted);
+  font-size: 10px;
+  flex-shrink: 0;
+}
+
+.criteria-item.valid .criteria-icon {
+  border-color: #087443;
+  background: #087443;
+  color: var(--white);
+}
+
+/* Status Cards & Details Summary */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  border: 2px solid transparent;
+}
+
+.status-badge.pending {
+  background: #fff8e6;
+  color: #8c6b00;
+  border-color: #ffe08a;
+}
+
+.status-badge.approved {
+  background: #e6f7ef;
+  color: #087443;
+  border-color: #a3e6be;
+}
+
+.status-badge.rejected {
+  background: #fdf0f0;
+  color: #c53030;
+  border-color: #f7baba;
+}
+
+.submission-summary {
+  background: #fdfdfd;
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 4px 4px 0 var(--brand);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 13.5px;
+  border-bottom: 1px solid var(--tint);
+}
+
+.summary-row:last-child {
+  border-bottom: none;
+}
+
+.summary-label {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.summary-val {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* Action Feature Cards (Approved Page) */
+.features-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 20px 0 28px;
+}
+
+.feature-box {
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  padding: 16px 18px;
+  background: var(--white);
+  box-shadow: 3px 3px 0 var(--brand);
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.feature-box-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--tint);
+  display: grid;
+  place-items: center;
+  color: var(--brand);
+  flex-shrink: 0;
+  border: 1.5px solid var(--brand);
+}
+
+.feature-box h3 {
+  font-size: 16px;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+
+.feature-box p {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0;
   line-height: 1.4;
 }
 
-.checkbox-text a {
-  color: var(--brand);
-  font-weight: 700;
-  text-decoration: underline;
+/* Action Banner in Rejected Page */
+.reason-banner {
+  background: #fff5f5;
+  border: 2px solid #c53030;
+  border-radius: 14px;
+  padding: 18px;
+  margin: 16px 0 24px;
+  box-shadow: 4px 4px 0 #c53030;
 }
 
-/* Submit Button & Footer Note */
+.reason-banner h3 {
+  color: #c53030;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.reason-banner p {
+  font-size: 13.5px;
+  color: #552525;
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* Submit Buttons & Note */
 .auth-submit-btn {
   width: 100%;
   height: 50px;
@@ -407,9 +674,7 @@
   text-decoration: underline;
 }
 
-/* ==========================================================================
-   Toast Notification with Spring Slide-in Animation
-   ========================================================================== */
+/* Toast Notification with Spring Slide-in Animation */
 .auth-toast {
   position: fixed;
   top: 24px;
@@ -459,9 +724,7 @@
   margin: 2px 0 0;
 }
 
-/* ==========================================================================
-   Footer Component for Auth Pages
-   ========================================================================== */
+/* Footer Component */
 .auth-footer {
   border-top: 2px solid var(--ink);
   background: var(--white);
@@ -486,9 +749,7 @@
   text-decoration: underline;
 }
 
-/* ==========================================================================
-   Responsive Breakpoints
-   ========================================================================== */
+/* Responsive Breakpoints */
 @media (max-width: 960px) {
   .auth-card {
     grid-template-columns: 1fr;
@@ -530,6 +791,16 @@
 
   .auth-right {
     padding: 28px 18px;
+  }
+
+  .upload-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .otp-box {
+    width: 44px;
+    height: 52px;
+    font-size: 20px;
   }
 
   .auth-footer .wrap {
