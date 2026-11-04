@@ -1,0 +1,81 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// A UniShare design page opened in the viewer
+model PageView {
+  id       String   @id @default(cuid())
+  slug     String
+  title    String
+  viewedAt DateTime @default(now())
+
+  @@index([slug, viewedAt])
+}
+
+// Global site visit counter
+model SiteVisit {
+  id        String   @id @default(cuid())
+  path      String   @default("/")
+  visitedAt DateTime @default(now())
+}
+
+// A student account created through registration
+model StudentAccount {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  displayName  String?
+  passwordHash String
+  verified     Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// 6-digit code: "register" (email confirmation), "login" (2FA), "reset" (password reset)
+model EmailCode {
+  id        String   @id @default(cuid())
+  email     String
+  code      String
+  kind      String   @default("register")
+  consumed  Boolean  @default(false)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([email, kind, createdAt])
+}
+
+// A logged-in session (cookie token)
+model Session {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  email     String
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+
+  @@index([email])
+}
+
+// A student verification submission for admin review
+model VerificationRequest {
+  id             String   @id @default(cuid())
+  email          String
+  fullName       String
+  studentId      String
+  department     String
+  programme      String
+  academicSession String
+  status         String   @default("pending") // pending | approved | rejected
+  createdAt      DateTime @default(now())
+
+  @@index([email, createdAt])
+}
