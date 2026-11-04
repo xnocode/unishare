@@ -21,6 +21,7 @@ dist/
 
 # SQLite Databases & logs
 *.db
+!prisma/template.db
 *.db-journal
 *.db-shm
 *.db-wal

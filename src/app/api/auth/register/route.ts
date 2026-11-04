@@ -60,6 +60,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true, email, devCode: code });
   } catch (err) {
     console.error("register error", err);
-    return NextResponse.json({ error: "Registration failed. Try again." }, { status: 500 });
+    const message = err instanceof Error ? err.message : "Registration failed. Try again.";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
