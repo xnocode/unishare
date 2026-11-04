@@ -2,6 +2,12 @@
   "name": "unishare",
   "version": "1.0.0",
   "description": "Campus peer-to-peer sharing and ride-pooling platform for university students",
+  "author": "Ridoy <xridoynocode@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xnocode/unishare.git"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
